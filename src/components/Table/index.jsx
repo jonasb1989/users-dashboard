@@ -8,7 +8,7 @@ const Table = (props) => {
   const { columns = [], data = [] } = props;
 
   return (
-    <AntdTable dataSource={data}>
+    <AntdTable dataSource={data} {...props}>
       {columns.map(({ title, dataIndex, key, render }) => (
         <Column title={title} dataIndex={dataIndex} key={key} render={render} />
       ))}

@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 
 import { addUser, editUser } from "redux/users";
 import setStateReducer from "hooks/setStateReducer";
+import Layout from "components/Layout";
 import Button from "components/Button";
 
 import "./index.less";
@@ -49,50 +50,36 @@ const UsersForm = () => {
   }, []); // eslint-disable-line
 
   return (
-    <div className="users-table">
-      <div className="users-table__actions">
-        <h2>Form</h2>
-      </div>
-      <div className="users-table__list">
-        <Form form={form} autoComplete="off" onFinish={onFinish} noValidate>
-          <div className="users-table__form">
-            <Form.Item
-              label="Name"
-              name="name"
-              rules={[{ required: true, message: "Name is required" }]}
-            >
-              <Input />
-            </Form.Item>
-
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                { required: true, message: "Email is required" },
-                { type: "email", message: "Field should be email type" },
-              ]}
-            >
-              <Input type="email" />
-            </Form.Item>
-          </div>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "flex-end",
-              padding: "15px 0",
-            }}
+    <Layout header={<h2>Form</h2>}>
+      <Form form={form} autoComplete="off" onFinish={onFinish} noValidate>
+        <div className="users-form">
+          <Form.Item
+            label="Name"
+            name="name"
+            rules={[{ required: true, message: "Name is required" }]}
           >
-            <Button type="primary" onClick={() => history.push("/")}>
-              Cancel
-            </Button>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </div>
-        </Form>
-      </div>
-    </div>
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              { required: true, message: "Email is required" },
+              { type: "email", message: "Field should be email type" },
+            ]}
+          >
+            <Input type="email" />
+          </Form.Item>
+        </div>
+        <div className="users-form_footer">
+          <Button onClick={() => history.push("/")}>Cancel</Button>
+          <Button variant="success" htmlType="submit">
+            Submit
+          </Button>
+        </div>
+      </Form>
+    </Layout>
   );
 };
 

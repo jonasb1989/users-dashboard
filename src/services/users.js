@@ -9,6 +9,6 @@ export const getUsers = async () => {
       return res.json();
     })
     .catch((error) => {
-      console.log("Error");
+      throw new Error(error);
     });
 };

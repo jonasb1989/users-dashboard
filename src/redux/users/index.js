@@ -23,10 +23,9 @@ export const usersReducer = createSlice({
     editUser: (state, action) => {
       const editedUsers = state.value.reduce((acc, user) => {
         if (user.id === action.payload.id) {
-          console.log("USER_teste", user.id);
           return [...acc, action.payload];
         }
-        console.log("USER_teste", user.name);
+
         return [...acc, { ...user }];
       }, []);
       state.value = editedUsers;
