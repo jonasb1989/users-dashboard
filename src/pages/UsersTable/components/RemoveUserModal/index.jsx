@@ -19,7 +19,7 @@ const RemoveUserModal = (props) => {
         </Button>,
       ]}
     >
-      Dou you really want to delete the user {selectedUserToDelete?.name} ?
+      Do you really want to delete the user {selectedUserToDelete?.name} ?
     </Modal>
   );
 };
