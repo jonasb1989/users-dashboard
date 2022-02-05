@@ -77,14 +77,21 @@ const UsersTable = () => {
             title: "Username",
             dataIndex: "username",
             key: "username",
+
             sorter: (a, b) => a?.username.localeCompare(b?.username),
             sortDirections: ["ascend", "descend", "ascend"],
           },
-          { title: "Email", dataIndex: "email", key: "email" },
+          {
+            title: "Email",
+            dataIndex: "email",
+            key: "email",
+            responsive: ["lg"],
+          },
           {
             title: "City",
             key: "city",
             dataIndex: "city",
+            responsive: ["lg"],
             render: (text, record) => <>{record?.address?.city}</>,
           },
           {
