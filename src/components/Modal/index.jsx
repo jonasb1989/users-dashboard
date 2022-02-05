@@ -1,11 +1,10 @@
 import { Modal as AntdModal } from "antd";
 
 const Modal = (props) => {
-  const { title, isVisible, onConfirm, onClose, children } = props;
+  const { isVisible, onConfirm, onClose, children } = props;
 
   return (
     <AntdModal
-      title={title}
       visible={isVisible}
       onOk={onConfirm}
       onCancel={onClose}

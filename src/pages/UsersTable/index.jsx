@@ -59,7 +59,7 @@ const UsersTable = () => {
       }
     >
       <Table
-        sortOrder="ascend"
+        rowKey="id"
         loading={isLoadingUsers}
         data={users}
         columns={[
@@ -126,6 +126,10 @@ const UsersTable = () => {
           setState({
             selectedUserToDelete: null,
             isModalDeleteUserVisible: false,
+          });
+          notification.open({
+            description: "User deleted with success",
+            duration: 3,
           });
         }}
         onClose={() =>
