@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from "react";
 
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { addUsers, deleteUser } from "redux/users";
@@ -20,7 +21,6 @@ const UsersTable = () => {
   const [state, setState] = useReducer(setStateReducer, initialState);
   const users = useSelector((state) => state.users.value);
   const dispatch = useDispatch();
-
   const { isModalDeleteUserVisible, selectedUserToDelete } = state;
 
   const setupUsersData = async () => {
@@ -38,7 +38,9 @@ const UsersTable = () => {
     <div className="users-table">
       <div className="users-table__actions">
         <h2>User list</h2>
-        <Button type="primary">Add new</Button>
+        <Button type="primary">
+          <Link to="/users">Add new</Link>
+        </Button>
       </div>
       <div className="users-table__list">
         <Table
@@ -64,13 +66,17 @@ const UsersTable = () => {
               title: "City",
               key: "city",
               dataIndex: "city",
-              render: (text, record) => <>{record.address.city}</>,
+              render: (text, record) => <>{record?.address?.city}</>,
             },
             {
               title: "Edit",
               key: "edit",
               dataIndex: "edit",
-              render: (text, record) => <Button variant="success">Edit</Button>,
+              render: (text, record) => (
+                <Button variant="success">
+                  <Link to={`/users/${record.id}`}>Edit</Link>
+                </Button>
+              ),
             },
             {
               title: "Delete",
@@ -97,7 +103,13 @@ const UsersTable = () => {
       <RemoveUserModal
         isVisible={isModalDeleteUserVisible}
         selectedUserToDelete={selectedUserToDelete}
-        onConfirm={() => dispatch(deleteUser(selectedUserToDelete.id))}
+        onConfirm={() => {
+          dispatch(deleteUser(selectedUserToDelete.id));
+          setState({
+            selectedUserToDelete: null,
+            isModalDeleteUserVisible: false,
+          });
+        }}
         onClose={() =>
           setState({
             selectedUserToDelete: null,
