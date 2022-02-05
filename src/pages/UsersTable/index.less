@@ -1,0 +1,22 @@
+@box-shadow-light: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+.users-table {
+  border-radius: 8px;
+  box-shadow: @box-shadow-light;
+
+  .users-table__actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+    border-bottom: 1px solid @box-shadow-light;
+
+    h1 {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .users-table__list {
+    padding: 0 25px;
+  }
+}

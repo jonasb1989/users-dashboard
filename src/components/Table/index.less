@@ -1,0 +1,26 @@
+@primary-gray: #e8e8e8;
+
+.ant-table-wrapper {
+  border: 1px solid @primary-gray;
+  border-radius: 8px;
+
+  .ant-table {
+    .ant-table-container {
+      .ant-table-content {
+        .ant-table-thead {
+          .ant-table-cell {
+            background-color: @primary-gray;
+          }
+
+          .ant-table-cell::before {
+            content: none;
+          }
+        }
+      }
+    }
+  }
+
+  .ant-table-pagination.ant-pagination {
+    margin: 16px 20px 0 0;
+  }
+}
